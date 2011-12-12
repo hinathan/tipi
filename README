@@ -1,0 +1,41 @@
+Tipi
+
+What is It?
+
+I run a lot of different Ruby/Rails and PHP apps on my Mac at once. I'd prefer to not have to think about firing up 'rails s' one at a time or various flavors of remembering different ports and whatnot. Using the Rails convention of /public as the webroot for a given project, this tool just looks through your ~/github directory and makes host entries and vhost apache conf files if it finds a /public directory. Obviously you'll need to turn on your cgi engine of choice, but I've found php5_module coexists nicely with passenger_module.
+
+This is super-hackish right now and will only work if your username is 'nathan' but I promise to clean it up in subsequent builds. Patches welcome, of course.
+
+----------
+
+0) Get organized and keep all your software projects in ~/github/
+
+1) sudo Add this line to the end of /etc/apache2/httpd.conf:
+
+	Include /Users/YOURUSERNAME/github/tipi/public/*.conf
+	
+2) (Edit to your situation and then) run this tool from whatever path you like
+
+	php build_configs.php
+
+3) Use Gas Mask.app to create entries in your hosts file (copying from ~/github/tipi/public/hosts)
+
+4) Restart apache (sudo apachectl restart -or- toggle System Preferences >> Web Sharing )
+
+-- Expert mode --
+
+5) Use the 'Gas Mask.app' Remote feature and point it to 'http://tipi.local/hosts'
+
+
+------------
+
+tipi
+noun
+variant spelling of tepee.
+
+tepee |ˈtēˌpē|(also teepee or tipi )
+noun
+a portable conical tent made of skins, cloth, or canvas on a frame of poles, used by American Indians of the Plains and Great Lakes regions.
+
+Where the Apaches (among others) used to live
+
