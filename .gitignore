@@ -1,3 +1,4 @@
 public/*.conf
 public/hosts
-
+public/*.conf.new
+.DS_Store
