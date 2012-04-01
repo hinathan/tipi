@@ -1,11 +1,13 @@
 #!/usr/bin/php
 <?php
 
-define('kWebRootRoot','/Users/nathan/github/');
+define('kWebRootRoot',$_ENV['HOME'] . '/github/');
 define('kOutputRoot',kWebRootRoot . 'tipi/public');
 define('kBasePort',80);
 define('kAlternatePort',80);
 if(!is_dir(kOutputRoot)) {
+	print "About to create path: " . kOutputRoot . "\n";
+	fgets(STDIN);
 	mkdir(kOutputRoot);
 }
 
@@ -31,6 +33,7 @@ function buildConfigs() {
 			continue;
 		}
 		$webroot = $entity . '/public';
+		$hostname = preg_replace('/[^a-z\d]/','-',strtolower(basename($entity)));
 		if(!is_dir($webroot)) {
 			$port = kAlternatePort;
 			print "No public path in " . basename($entity) . "\n";
@@ -42,7 +45,6 @@ function buildConfigs() {
 				continue;
 			}
 		}
-		$hostname = preg_replace('/[^a-z\d]/','-',strtolower(basename($entity)));
 		$hosts_template .= createHost($hostname,$webroot,$port);
 	}
 
@@ -95,7 +97,7 @@ EOT;
 	if(file_exists($outfile)) {
 		$original = file_get_contents($outfile);
 		if($original != $httpd_template) {
-			print "Would change $hostname - perhaps you edited it manually. Refer to $outfile.new\n";
+			print "Would change $hostname - perhaps you edited it manually. Instead writing to $outfile.new\n";
 			file_put_contents("$outfile.new",$httpd_template);
 		} else {
 			print "Unchanged $hostname\n";

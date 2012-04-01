@@ -4,7 +4,7 @@ What is It?
 
 I run a lot of different Ruby/Rails and PHP apps on my Mac at once. I'd prefer to not have to think about firing up 'rails s' one at a time or various flavors of remembering different ports and whatnot. Using the Rails convention of /public as the webroot for a given project, this tool just looks through your ~/github directory and makes host entries and vhost apache conf files if it finds a /public directory. Obviously you'll need to turn on your cgi engine of choice, but I've found php5_module coexists nicely with passenger_module.
 
-This is super-hackish right now and will only work if your username is 'nathan' but I promise to clean it up in subsequent builds. Patches welcome, of course.
+Patches welcome, of course.
 
 ----------
 
