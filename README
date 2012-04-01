@@ -10,8 +10,9 @@ Patches welcome, of course.
 
 0) Get organized and keep all your software projects in ~/github/
 
-1) sudo Add this line to the end of /etc/apache2/httpd.conf:
+1) sudo Add these two lines to the end of /etc/apache2/httpd.conf:
 
+	NameVirtualHost *:80
 	Include /Users/YOURUSERNAME/github/tipi/public/*.conf
 	
 2) (Edit to your situation and then) run this tool from whatever path you like
