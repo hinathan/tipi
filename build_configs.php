@@ -16,10 +16,10 @@ buildConfigs();
 
 function buildConfigs() {
 	
-	$hosts_template = '127.0.0.1	localhost
-	255.255.255.255	broadcasthost
-	::1             localhost 
-	fe80::1%lo0	localhost
+	$hosts_template = '127.0.0.1	localhost local.letsral.ly
+255.255.255.255	broadcasthost
+::1             localhost 
+fe80::1%lo0	localhost
 	';
 	
 	$path = kWebRootRoot . '*';
